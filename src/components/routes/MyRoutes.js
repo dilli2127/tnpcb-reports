@@ -1,62 +1,63 @@
 import Login from "../defaultPage/login";
 import Layout from "../layout/layout";
-import Products from "../pages/products"
-import Category from "../pages/category"
-import Units from "../pages/units"
-import Inventory from "../pages/Inventory"
+import Products from "../pages/products";
+import Category from "../pages/category";
+import Units from "../pages/units";
+import Inventory from "../pages/Inventory";
 
 export const ROUTES = {
   LOGIN: "/",
-  LAYOUT:"layout",
-  PRODUCTS:"/products",
-  CATEGORY:"/category",
-  UNITS :"/units",
-  INVENTORY:"/inventory"
+  LAYOUT: "layout",
+  PRODUCTS: "/products",
+  CATEGORY: "/category",
+  UNITS: "/units",
+  INVENTORY: "/inventory",
 };
 
-const myRoutes = [
+const my_routes = [
   {
     path: ROUTES.LOGIN,
-    exact: true,
+    name: "Login",
     key: "Login",
-    authenticate: false,
-    component: Login,
+    authenticate: true,
+    component: <Login />,
   },
   {
+    name: "Admin",
     key: "Admin",
-    component: Layout,
+    component: <Layout />,
     authenticate: false,
     children: [
       {
         path: ROUTES.PRODUCTS,
-        exact: true,
+        name: "Products",
         key: "Products",
         authenticate: false,
-        component: Products,
+        component: <Products />,
       },
       {
         path: ROUTES.CATEGORY,
-        exact: true,
+        name: "Category",
         key: "Category",
         authenticate: false,
-        component: Category,
+        component: <Category />,
       },
       {
         path: ROUTES.UNITS,
-        exact: true,
+        name: "Units",
         key: "Units",
         authenticate: false,
-        component: Units,
+        component: <Units />,
       },
       {
         path: ROUTES.INVENTORY,
-        exact: true,
+        name: "Units",
         key: "Units",
         authenticate: false,
-        component: Inventory,
+        component: <Inventory />,
       },
     ],
   },
 ];
 
-export default myRoutes;
+export default my_routes;
