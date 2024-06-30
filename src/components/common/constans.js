@@ -1,0 +1,1 @@
+export const ProjectName = "Fresh Focuz Studio";
