@@ -33,9 +33,9 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignInSide() {
-  const history = useNavigate();
+  const navigate  = useNavigate();
   const handleSubmit = (event) => {
-    history.push('Products');
+    navigate('products');
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
