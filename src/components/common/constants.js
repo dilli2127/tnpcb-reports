@@ -1,1 +1,1 @@
-export const ProjectName = "Fresh Focuz Studio";
+export const ProjectName = "TNPCB REPORTS";
