@@ -29,31 +29,13 @@ const CustomLayout = ({ children }) => {
       label: "Products",
       url: ROUTES.PRODUCTS,
     },
-    {
-      key: "2",
-      icon: <VideoCameraOutlined />,
-      label: "Catagory",
-      url: ROUTES.CATEGORY,
-    },
-    {
-      key: "4",
-      icon: <UploadOutlined />,
-      label: "Units",
-      url: ROUTES.UNITS,
-    },
-    {
-      key: "5",
-      icon: <UploadOutlined />,
-      label: "Inventory",
-      url: ROUTES.INVENTORY,
-    },
    ]}, 
    
     {
       key: "3",
       icon: <UploadOutlined />,
       label: "Invoice",
-      url: ROUTES.PRODUCTS,
+      url: ROUTES.LOGIN,
     },
   
    

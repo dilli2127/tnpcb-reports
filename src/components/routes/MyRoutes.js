@@ -1,25 +1,25 @@
 import Login from "../defaultPage/login";
-import Layout from "../layout/layout";
+import Layout from "../../components/layout/layout";
 import Products from "../pages/products";
 
-export const ROUTES = {
+const ROUTES = {
   LOGIN: "/",
-  LAYOUT: "layout",
-  PRODUCTS: "/products",
+  PRODUCTS: "products",
 };
 
-const my_routes = [
+const myRoutes = [
   {
     path: ROUTES.LOGIN,
     name: "Login",
     key: "Login",
-    authenticate: true,
-    component: <Login />,
+    authenticate: false,
+    component: Login,
   },
   {
+    path: ROUTES.LAYOUT,
     name: "Admin",
     key: "Admin",
-    component: <Layout />,
+    component: Layout,
     authenticate: false,
     children: [
       {
@@ -27,10 +27,11 @@ const my_routes = [
         name: "Products",
         key: "Products",
         authenticate: false,
-        component: <Products />,
+        component: Products,
       },
     ],
   },
 ];
 
-export default my_routes;
+export default myRoutes;
+export { ROUTES };

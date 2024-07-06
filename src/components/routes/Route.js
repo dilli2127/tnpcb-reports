@@ -1,85 +1,116 @@
-import React, { Suspense, memo, useRef } from "react";
-import { BrowserRouter, useLocation, useRoutes } from "react-router-dom";
+import React, { createRef, Suspense } from "react";
+import lodash from "lodash";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
+import NotFound from "../defaultPage/notFound";
+import myRoutes from "../routes/MyRoutes";
+import { useCheckLogin, usePageAccess } from "../auth/auth";
+import NotAllowed from "../defaultPage/notAllowed";
+import Login from "../defaultPage/login";
+import { ProjectName } from "../common/constants";
 
-// import Loading from "@src/views/pages/loading";
-import MyRoute from "./my_route";
-import my_routes from "./MyRoutes";
-import { UsePageAccess } from "../common/auth";
+export const historyRef = createRef();
 
-export const Router = memo(() => {
-  const UseAuthenticateCheck = (route) => {
-    let { pathname } = useLocation();
-    let key = route.find((list) => list?.path.includes(pathname));
-    if (route?.authenticate) {
-      return UsePageAccess(route?.key);
+const Router = () => {
+  let paths = [];
+
+  // Utility function to retrieve all paths from routes configuration
+  const getPaths = (routes, parent_keys = []) => {
+    for (let i = 0; i < routes.length; i++) {
+      let _route = routes[i];
+      let _key = _route.key;
+      let _parent_keys = [...parent_keys, _key];
+      if (_route.path) {
+        paths.push({ path: _route.path, keys: _parent_keys });
+      } else if (_route.children) {
+        paths = getPaths(_route.children, _parent_keys);
+      }
     }
-    return true;
+    return paths;
   };
 
-  const get_route = (route) => {
-    let _route = {};
-    if (route?.children) {
-      let children = [];
-      route.children?.forEach((child) => {
-        let child_route = get_route(child);
-        children.push(child_route);
-      });
-      _route = {
-        path: route.path,
-        element: (
-          <MyRoute name={route.name} authenticate={route.authenticate}>
-            {route.component}
-          </MyRoute>
-        ),
-        children: children,
-      };
+  paths = getPaths(myRoutes, []);
+
+  // Component to handle route authentication and access
+  const MyRoute = ({ my_route_key, authenticate, children }) => {
+    const { pathname } = useLocation();
+    let url = pathname.split("/");
+    if (url[1]) {
+      let path = lodash.startCase(lodash.camelCase(url[1]));
+      document.title = path + " | " + ProjectName;
     } else {
-      _route = {
-        path: route.path,
-        element: (
-          <MyRoute name={route.name} authenticate={route.authenticate}>
-            {route.component}
-          </MyRoute>
-        ),
-      };
+      document.title = ProjectName;
     }
-    console.log("_route", _route);
-    return _route;
+
+    const isLoggedIn = useCheckLogin();
+    const hasAccess = usePageAccess(my_route_key);
+    console.log("isLoggedIn",isLoggedIn)
+    console.log("hasAccess",hasAccess)
+
+    if (!authenticate) {
+      return <>{children}</>;
+    }
+
+    if (!isLoggedIn && !hasAccess) {
+      return <>{children}</>;
+    }
+
+    if (!isLoggedIn) {
+      return <Login />; // Redirect to Login component if not logged in
+    }
+
+    if (!hasAccess) {
+      return <NotAllowed />; // Redirect to NotAllowed component if no access
+    }
   };
 
-  const MyRouter = () => {
-    let routes = [];
-    my_routes?.forEach((my_route) => {
-      let child_route = get_route(my_route);
-      routes.push(child_route);
+  // Function to render nested routes recursively
+  const renderRoutes = (routes) => {
+    return routes.map((route) => {
+      const { key, path, component: Component, children } = route;
+
+      return (
+        <Route
+          key={key}
+          path={path}
+          element={
+            <MyRoute
+              my_route_key={key}
+              authenticate={route.authenticate}
+            >
+              <Component />
+            </MyRoute>
+          }
+        >
+          {children && renderRoutes(children)}
+        </Route>
+      );
     });
+  };
 
-    let not_found_route = {
-      path: "*",
-      element: <div />,
-    };
-
-    let not_allowed_route = {
-      path: "not-allowed",
-      element: <div />,
-    };
-    routes.push(not_found_route);
-    routes.push(not_allowed_route);
-    let route_elements = useRoutes(routes);
-    const location = useLocation();
-    console.log("route_elements", routes, location);
-    const authenticate_status =true
-    //  UseAuthenticateCheck(routes); // Use the custom hook here
-    if (authenticate_status) {
-      return <div>{route_elements}</div>;
-    }
+  const BrowserRoute = () => {
+    const history = useNavigate();
+    historyRef.current = history;
+    return (
+      <Routes>
+        {renderRoutes(myRoutes)}
+        <Route path="*" element={<NotFound />} /> {/* Handle 404 */}
+      </Routes>
+    );
   };
 
   return (
     <BrowserRouter>
       <Suspense fallback={<div />}>
-        <MyRouter />
+        <BrowserRoute />
       </Suspense>
     </BrowserRouter>
   );
-});
+};
+
+export default Router;

@@ -8,7 +8,7 @@ const useCheckLogin = () => {
     let token = "dilli"
     try {
       if (token) {
-        setIsLoggedIn(true);
+        setIsLoggedIn(false);
       } else {
         setIsLoggedIn(false);
       }
