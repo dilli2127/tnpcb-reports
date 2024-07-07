@@ -13,7 +13,7 @@ const ProductModal = (props) => {
   const handleChildCancel = (value) => {
     setOpen(value);
   };
-  let formColumns = 2;
+  let formColumns = 3;
   const formItems = [
     {
       label: "From Date",
@@ -187,6 +187,7 @@ const ProductModal = (props) => {
           FormValue={FormValue}
           onChildCancel={handleChildCancel}
           formColumns={formColumns}
+          splitLabelAndField={false}
         />
       </Modal>
     </>
