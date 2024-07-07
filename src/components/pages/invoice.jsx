@@ -2,7 +2,7 @@ import React from "react";
 import AntdTable from "../antdTable/table";
 import { Space, Table, Tag } from "antd";
 import { Button, Grid, Stack } from "@mui/material";
-import ProductModal from "../pageComponents/products/productsModal"
+import InvoiceModal from "../pageComponents/products/invoiceModal"
 const Products = () => {
   const columns = [
     {
@@ -82,7 +82,7 @@ const Products = () => {
         <Grid  container spacing={2}>
           <Grid xs={10}></Grid>
           <Grid xs={2}>
-          <ProductModal  />
+          <InvoiceModal  />
           </Grid>
         </Grid>
         <div>

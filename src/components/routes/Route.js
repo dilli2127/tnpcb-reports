@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import CustomLayout from '../../components/layout/layout';
 import NotFound from '../defaultPage/notFound';
-import Products from '../../components/pages/products';
+import Products from '../../components/pages/invoice';
 import Login from "../defaultPage/login";
 import { ProjectName } from "../common/constants";
 
