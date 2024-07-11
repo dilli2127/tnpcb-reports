@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Button, DatePicker, Input, InputNumber, Modal, Select } from "antd";
+import { Button, DatePicker, Input, InputNumber, Modal, Radio, Select,RangePicker} from "antd";
 import { Grid, Stack } from "@mui/material";
 import AntdForm from "../../antdFrom/antdFrom";
 
+
 const ProductModal = (props) => {
+  const { RangePicker } = DatePicker;
   const [open, setOpen] = useState(false);
   const handleOk = () => {};
   const FormValue = (values) => {
@@ -13,73 +15,113 @@ const ProductModal = (props) => {
   const handleChildCancel = (value) => {
     setOpen(value);
   };
-  let formColumns = 3;
+  let formColumns =3;
   const formItems = [
+  
     {
-      label: "From Date",
-      name: "FromDate",
+      label: "Date",
+      name: "RangePicker",
       rules: [{ required: true, message: "Please input!" }],
-      component: <DatePicker />,
-    },
-    {
-      label: "To Date",
-      name: "ToDate",
-      rules: [{ required: true, message: "Please input!" }],
-      component: <DatePicker />,
+      component: <RangePicker />,
     },
     {
       label: "Duplicate Promo In Same Bill",
       name: "Select",
       rules: [{ required: true, message: "Please input!" }],
-      component: <Select />,
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
     },
     {
       label: "Applicable in Single Bill",
       name: "Select",
       rules: [{ required: true, message: "Please input!" }],
-      component: <Select />,
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
     },
     {
       label: "Allow Exempted Hierarchy",
       name: "Select",
       rules: [{ required: true, message: "Please input!" }],
-      component: <Select />,
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
     },
     {
       label: "Allow New SR Bills",
       name: "Select",
       rules: [{ required: true, message: "Please input!" }],
-      component: <Select />,
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
     },
     {
       label: "Promotion Amount Editable",
       name: "Select",
       rules: [{ required: true, message: "Please input!" }],
-      component: <Select />,
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
     },
     {
       label: "Applicable Before GST",
       name: "Select",
       rules: [{ required: true, message: "Please input!" }],
-      component: <Select />,
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
     },
     {
       label: "Where CRM Promo Y/N",
       name: "Select",
       rules: [{ required: true, message: "Please input!" }],
-      component: <Select />,
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
     },
     {
       label: "Promotion Applied on MC",
       name: "Select",
       rules: [{ required: true, message: "Please input!" }],
-      component: <Select />,
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
     },
     {
       label: "Additional Discount Allowed",
       name: "Select",
       rules: [{ required: true, message: "Please input!" }],
-      component: <Select />,
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
     },
     {
       label: "Additional Disc Limit Amount",
@@ -97,19 +139,34 @@ const ProductModal = (props) => {
       label: "Colorstone Disc Allowed",
       name: "Select",
       rules: [{ required: true, message: "Please input!" }],
-      component: <Select />,
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
     },
     {
       label: "Diamond Disc Allowed",
       name: "Select",
       rules: [{ required: true, message: "Please input!" }],
-      component: <Select />,
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
     },
     {
       label: "MRP Discount Applicable",
       name: "Select",
       rules: [{ required: true, message: "Please input!" }],
-      component: <Select />,
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
     },
     {
       label: "MRP Disc Amount",
@@ -127,7 +184,12 @@ const ProductModal = (props) => {
       label: "Apply on DMD Value",
       name: "Select",
       rules: [{ required: true, message: "Please input!" }],
-      component: <Select />,
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
     },
     {
       label: "Diamond Disc Amt Limit",
@@ -145,7 +207,12 @@ const ProductModal = (props) => {
       label: "Apply on Color tone Value",
       name: "Select",
       rules: [{ required: true, message: "Please input!" }],
-      component: <Select />,
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
     },
     {
       label: "Colorstone Disc Amt limit",
@@ -163,7 +230,12 @@ const ProductModal = (props) => {
       label: "Apply On MRP Value",
       name: "Select",
       rules: [{ required: true, message: "Please input!" }],
-      component: <Select />,
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
     },
   ];
   return (
@@ -187,7 +259,7 @@ const ProductModal = (props) => {
           FormValue={FormValue}
           onChildCancel={handleChildCancel}
           formColumns={formColumns}
-          splitLabelAndField={false}
+          splitLabelAndField={true}
         />
       </Modal>
     </>

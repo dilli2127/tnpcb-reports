@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import CustomLayout from '../../components/layout/layout';
 import NotFound from '../defaultPage/notFound';
-import Products from '../../components/pages/invoice';
+import Invoice from '../../components/pages/invoice';
+import Dashboard from '../../components/pages/overAllDashBoard';
 import Login from "../defaultPage/login";
 import { ProjectName } from "../common/constants";
 
@@ -31,7 +32,8 @@ const RoutePages = () => {
         element={
           <CustomLayout>
             <Routes>
-              <Route path="/invoice" element={<Products />} />
+            <Route path="/over-all-dashboard" element={<Dashboard />} />
+              <Route path="/invoice" element={<Invoice />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </CustomLayout>

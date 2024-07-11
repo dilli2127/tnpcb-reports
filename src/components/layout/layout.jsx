@@ -7,6 +7,7 @@ import {
   LaptopOutlined,
   NotificationOutlined,
 } from '@ant-design/icons';
+import { Dashboard } from '@mui/icons-material';
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
@@ -17,8 +18,8 @@ const CustomLayout = ({ children }) => {
       <Header className="header">
         <div className="logo" />
         <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
-          <Menu.Item key="1" icon={<UserOutlined />}>
-            <Link to="/admin">Dash Board</Link>
+          <Menu.Item key="1" icon={<Dashboard />}>
+            <Link to="/over-all-dashboard">Over All Dash Board</Link>
           </Menu.Item>
           <Menu.Item key="2" icon={<LaptopOutlined />}>
             <Link to="/invoice">Invoice</Link>

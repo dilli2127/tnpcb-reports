@@ -35,7 +35,7 @@ const defaultTheme = createTheme();
 export default function SignInSide() {
   const navigate  = useNavigate();
   const handleSubmit = (event) => {
-    navigate('products');
+    navigate('over-all-dashboard');
     event.preventDefault();
     const data = new FormData(event.currentTarget);
   };
