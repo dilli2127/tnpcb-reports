@@ -46,6 +46,7 @@ const AntdForm = (props) => {
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                   <Typography variant="body1" style={{ color: 'MenuText', fontWeight: 'bold', paddingLeft: '8px', fontSize:"14px" }}>
                     {item.label}
+                    {item.rules?.some(rule => rule.required) && <Typography component="span" color="error">*</Typography>}
                   </Typography>
                   <Form.Item
                     name={item.name}
@@ -57,7 +58,12 @@ const AntdForm = (props) => {
                 </Box>
               ) : (
                 <Form.Item
-                  label={item.label}
+                  label={
+                    <Typography variant="body1" style={{ color: 'MenuText', fontWeight: 'bold', paddingLeft: '8px', fontSize:"14px" }}>
+                      {item.label}
+                      {item.rules?.some(rule => rule.required) && <Typography component="span" color="error">*</Typography>}
+                    </Typography>
+                  }
                   name={item.name}
                   rules={item.rules}
                   labelCol={{ span: 12 }}

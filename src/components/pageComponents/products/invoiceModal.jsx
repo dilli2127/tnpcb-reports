@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Button, DatePicker, Input, InputNumber, Modal, Radio, Select,RangePicker} from "antd";
-import { Grid, Stack } from "@mui/material";
+import { Button, DatePicker,InputNumber, Modal, Radio} from "antd";
 import AntdForm from "../../antdFrom/antdFrom";
 
 
@@ -259,7 +258,7 @@ const ProductModal = (props) => {
           FormValue={FormValue}
           onChildCancel={handleChildCancel}
           formColumns={formColumns}
-          splitLabelAndField={true}
+          splitLabelAndField={false}
         />
       </Modal>
     </>
