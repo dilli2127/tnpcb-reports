@@ -237,6 +237,65 @@ const ProductModal = (props) => {
       ),
     },
   ];
+
+  const nestedInputs=[
+    {
+      label: "Date",
+      name: "RangePicker",
+      rules: [{ required: true, message: "Please input!" }],
+      component: <RangePicker />,
+    },
+    {
+      label: "Date",
+      name: "RangePicker",
+      rules: [{ required: true, message: "Please input!" }],
+      component: <RangePicker />,
+    },
+    {
+      label: "Duplicate Promo In Same Bill",
+      name: "Select",
+      rules: [{ required: true, message: "Please input!" }],
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
+    },
+    {
+      label: "Duplicate Promo In Same Bill",
+      name: "Select",
+      rules: [{ required: true, message: "Please input!" }],
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
+    },
+    {
+      label: "Duplicate Promo In Same Bill",
+      name: "Select",
+      rules: [{ required: true, message: "Please input!" }],
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
+    },
+    {
+      label: "Duplicate Promo In Same Bill",
+      name: "Select",
+      rules: [{ required: true, message: "Please input!" }],
+      component: (
+        <Radio.Group>
+          <Radio value="option1">Yes</Radio>
+          <Radio value="option2">No</Radio>
+        </Radio.Group>
+      ),
+    },
+  ]
   return (
     <>
       <Button type="primary" onClick={() => setOpen(true)}>
@@ -259,6 +318,8 @@ const ProductModal = (props) => {
           onChildCancel={handleChildCancel}
           formColumns={formColumns}
           splitLabelAndField={false}
+          nested={true}
+          nestedInputs={nestedInputs}
         />
       </Modal>
     </>

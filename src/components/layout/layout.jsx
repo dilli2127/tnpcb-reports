@@ -25,7 +25,7 @@ const CustomLayout = ({ children }) => {
             <Link to="/invoice">Invoice</Link>
           </Menu.Item>
           <Menu.Item key="3" icon={<NotificationOutlined />}>
-            <Link to="/admin/notifications">Notifications</Link>
+            <Link to="/promotion">Promotion</Link>
           </Menu.Item>
         </Menu>
       </Header>
