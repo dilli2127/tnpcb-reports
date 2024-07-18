@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AntdTable from "../antdTable/table";
-import { Modal, Space, Table, Tag } from "antd";
+import { Modal, notification, Space, Table, Tag } from "antd";
 import { Button, Grid, Stack, Typography } from "@mui/material";
 import InvoiceModal from "../pageComponents/products/invoiceModal";
 const Products = () => {
@@ -78,6 +78,10 @@ const Products = () => {
     const updatedItems = existingItems.filter(item => item.id !== id);
     localStorage.setItem('PromotionItems', JSON.stringify(updatedItems));
     setPromotionItems(updatedItems); // Update state to trigger re-render
+    notification.success({
+      message: 'Item Deleted',
+      description: 'The item has been successfully deleted.',
+    });
   };
   return (
     <>
