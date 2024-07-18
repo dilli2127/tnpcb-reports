@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
+import { notification } from 'antd';
 
 function Copyright(props) {
  
@@ -20,7 +21,7 @@ function Copyright(props) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        KALYAN JEWELLERS
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -35,7 +36,15 @@ const defaultTheme = createTheme();
 export default function SignInSide() {
   const navigate  = useNavigate();
   const handleSubmit = (event) => {
+    console.log("event",event.target.email.value)
+    if(event.target.email.value === "kalyanjewellers@mail.com" && event.target.password.value === "Kalyan@123" )
+    {
     navigate('over-all-dashboard');
+    notification.success({
+      message: 'Login successfully',
+      description: 'Welcome Admin.',
+    });
+    }
     event.preventDefault();
     const data = new FormData(event.currentTarget);
   };

@@ -6,23 +6,23 @@ import PromotionModal from "../pageComponents/promotionModal"
 const Products = () => {
   const columns = [
     {
-      title: "Name",
+      title: "Template Name",
       dataIndex: "name",
       key: "name",
       render: (text) => <a>{text}</a>,
     },
     {
-      title: "Age",
+      title: "Definition",
       dataIndex: "age",
       key: "age",
     },
     {
-      title: "Address",
+      title: "Promotion Name",
       dataIndex: "address",
       key: "address",
     },
     {
-      title: "Tags",
+      title: "Promotion Definition",
       key: "tags",
       dataIndex: "tags",
       render: (_, { tags }) => (

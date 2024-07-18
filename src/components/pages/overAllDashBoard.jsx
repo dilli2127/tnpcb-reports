@@ -58,7 +58,7 @@ const OverAllDashBoard = () => {
             loader={<div>Loading Chart</div>}
             data={data1}
             options={{
-              title: "OLMMS",
+              title: "Gold",
               is3D: true,
               titleTextStyle: {
                 fontSize: 18, 
@@ -76,7 +76,7 @@ const OverAllDashBoard = () => {
             loader={<div>Loading Chart</div>}
             data={data2}
             options={{
-              title: "OCCMS",
+              title: "Dimond",
               is3D: true,
               titleTextStyle: {
                 fontSize: 18, 
@@ -93,7 +93,7 @@ const OverAllDashBoard = () => {
             loader={<div>Loading Chart</div>}
             data={data3}
             options={{
-              title: "OLGPRS",
+              title: "Sales",
               is3D: true,
               titleTextStyle: {
                 fontSize: 18, 
@@ -113,7 +113,7 @@ const OverAllDashBoard = () => {
             loader={<div>Loading Chart</div>}
             data={data3}
             options={{
-              title: "BIO MEDICAL",
+              title: "Total Customers",
               is3D: true,
               titleTextStyle: {
                 fontSize: 18, 
@@ -130,7 +130,7 @@ const OverAllDashBoard = () => {
             loader={<div>Loading Chart</div>}
             data={data3}
             options={{
-              title: "OPEN HOUSE",
+              title: "Branches",
               sizs:"50px",
               is3D: true,
               titleTextStyle: {
@@ -147,7 +147,7 @@ const OverAllDashBoard = () => {
       height="400px"
       data={data4}
       options={{
-        title: "City Populations",
+        title: "Year Wise Sales",
         // is3D: true,
         titleTextStyle: {
           fontSize: 18, 

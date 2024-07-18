@@ -1,1 +1,1 @@
-export const ProjectName = "TNPCB REPORTS";
+export const ProjectName = "KALYAN JEWELLERS";

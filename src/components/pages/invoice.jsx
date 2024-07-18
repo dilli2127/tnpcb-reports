@@ -1,92 +1,96 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AntdTable from "../antdTable/table";
-import { Space, Table, Tag } from "antd";
-import { Button, Grid, Stack } from "@mui/material";
-import InvoiceModal from "../pageComponents/products/invoiceModal"
+import { Modal, Space, Table, Tag } from "antd";
+import { Button, Grid, Stack, Typography } from "@mui/material";
+import InvoiceModal from "../pageComponents/products/invoiceModal";
 const Products = () => {
+  const [promotionItems, setPromotionItems] = useState([]);
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
-      render: (text) => <a>{text}</a>,
+      title: "Invoice",
+      dataIndex: "id",
+      key: "id",
     },
     {
-      title: "Age",
-      dataIndex: "age",
-      key: "age",
+      title: "Additional DiscLimit",
+      dataIndex: "AdditionalDiscLimit%",
+      key: "AdditionalDiscLimit%",
     },
     {
-      title: "Address",
-      dataIndex: "address",
-      key: "address",
+      title: "MRP Discount Applicable",
+      dataIndex: "MRPDiscountApplicable",
+      key: "MRPDiscountApplicable",
     },
     {
-      title: "Tags",
-      key: "tags",
-      dataIndex: "tags",
-      render: (_, { tags }) => (
-        <>
-          {tags.map((tag) => {
-            let color = tag.length > 5 ? "geekblue" : "green";
-            if (tag === "loser") {
-              color = "volcano";
-            }
-            return (
-              <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
-              </Tag>
-            );
-          })}
-        </>
-      ),
+      title: "Diamond DiscAmt Limit",
+      key: "DiamondDiscAmtLimit",
+      dataIndex: "DiamondDiscAmtLimit",
     },
     {
       title: "Action",
       key: "action",
       render: (_, record) => (
         <Space size="middle">
-          <a>Invite {record.name}</a>
-          <a>Delete</a>
+          {/* <a onClick={() => editItem(record.id)}>Edit</a> */}
+          <a onClick={() => showDeleteConfirm(record.id)}>Delete</a>
         </Space>
       ),
     },
   ];
+  const showDeleteConfirm = (id) => {
+    Modal.confirm({
+      title: 'Are you sure you want to delete this item?',
+      okText: 'Yes',
+      okType: 'danger',
+      cancelText: 'No',
+      onOk() {
+        deleteItem(id);
+      },
+      onCancel() {
+        console.log('Cancel');
+      },
+    });
+  };
+  const getPromotionItems = () => {
+    // Retrieve the existing PromotionItems from local storage
+    const existingItemsString = localStorage.getItem('PromotionItems');
+    const existingItems = existingItemsString ? JSON.parse(existingItemsString) : [];
+    setPromotionItems(existingItems);
+  };
+  useEffect(() => {
+    getPromotionItems();
+  }, [promotionItems]);
+  const editItem = (id) => {
+    const existingItemsString = localStorage.getItem('PromotionItems');
+    const existingItems = existingItemsString ? JSON.parse(existingItemsString) : [];
+    const itemToEdit = existingItems.find(item => item.id === id);
+    if (itemToEdit) {
+      console.log("Edit item:", itemToEdit);
+      localStorage.setItem('PromotionItems', JSON.stringify(existingItems));
+      setPromotionItems([...existingItems]); // Update state to trigger re-render
+    }
+  };
 
-  const data = [
-    {
-      key: "1",
-      name: "John Brown",
-      age: 32,
-      address: "New York No. 1 Lake Park",
-      tags: ["nice", "developer"],
-    },
-    {
-      key: "2",
-      name: "Jim Green",
-      age: 42,
-      address: "London No. 1 Lake Park",
-      tags: ["loser"],
-    },
-    {
-      key: "3",
-      name: "Joe Black",
-      age: 32,
-      address: "Sydney No. 1 Lake Park",
-      tags: ["cool", "teacher"],
-    },
-  ];
+  // Delete handler
+  const deleteItem = (id) => {
+    const existingItemsString = localStorage.getItem('PromotionItems');
+    const existingItems = existingItemsString ? JSON.parse(existingItemsString) : [];
+    const updatedItems = existingItems.filter(item => item.id !== id);
+    localStorage.setItem('PromotionItems', JSON.stringify(updatedItems));
+    setPromotionItems(updatedItems); // Update state to trigger re-render
+  };
   return (
     <>
       <Stack spacing={2}>
-        <Grid  container spacing={2}>
+        <Typography variant="h4">Invoice</Typography>
+        <Grid container spacing={2}>
           <Grid xs={10}></Grid>
           <Grid xs={2}>
-          <InvoiceModal  />
+            <InvoiceModal />
           </Grid>
         </Grid>
         <div>
-          <Table columns={columns} dataSource={data} />
+          <Table columns={columns} dataSource={promotionItems} />
         </div>
       </Stack>
     </>
