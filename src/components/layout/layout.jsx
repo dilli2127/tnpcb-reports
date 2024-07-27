@@ -43,6 +43,9 @@ const CustomLayout = ({ children }) => {
           <Menu.Item key="2" icon={<LaptopOutlined />}>
             <Link to="/invoice">OLMMS</Link>
           </Menu.Item>
+          <Menu.Item key="6" icon={<NotificationOutlined />}>
+            <Link to="/promotion">OLGPRS</Link>
+          </Menu.Item>
           <Menu.Item key="3" icon={<NotificationOutlined />}>
             <Link to="/promotion">OCMMS</Link>
           </Menu.Item>
@@ -51,9 +54,6 @@ const CustomLayout = ({ children }) => {
           </Menu.Item>
           <Menu.Item key="5" icon={<NotificationOutlined />}>
             <Link to="/promotion">OHS</Link>
-          </Menu.Item>
-          <Menu.Item key="6" icon={<NotificationOutlined />}>
-            <Link to="/promotion">OLGPRS</Link>
           </Menu.Item>
           <Menu.Item key="7" icon={<NotificationOutlined />}>
             <Link to="/promotion">AQI</Link>
