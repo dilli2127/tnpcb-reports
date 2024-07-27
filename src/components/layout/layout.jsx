@@ -41,10 +41,22 @@ const CustomLayout = ({ children }) => {
             <Link to="/over-all-dashboard">Over All Dash Board</Link>
           </Menu.Item>
           <Menu.Item key="2" icon={<LaptopOutlined />}>
-            <Link to="/invoice">Invoice</Link>
+            <Link to="/invoice">OLMMS</Link>
           </Menu.Item>
           <Menu.Item key="3" icon={<NotificationOutlined />}>
-            <Link to="/promotion">Promotion</Link>
+            <Link to="/promotion">OCMMS</Link>
+          </Menu.Item>
+          <Menu.Item key="4" icon={<NotificationOutlined />}>
+            <Link to="/promotion">Bio Medical Waste</Link>
+          </Menu.Item>
+          <Menu.Item key="5" icon={<NotificationOutlined />}>
+            <Link to="/promotion">OHS</Link>
+          </Menu.Item>
+          <Menu.Item key="6" icon={<NotificationOutlined />}>
+            <Link to="/promotion">OLGPRS</Link>
+          </Menu.Item>
+          <Menu.Item key="7" icon={<NotificationOutlined />}>
+            <Link to="/promotion">AQI</Link>
           </Menu.Item>
         </Menu>
         <div style={{ marginLeft: 'auto' }}>
