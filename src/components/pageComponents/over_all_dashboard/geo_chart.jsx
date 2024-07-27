@@ -1,34 +1,19 @@
 import React from 'react';
-import { Chart } from 'react-google-charts';
+import TamilNaduMap from './tamilnadumap'; // Adjust the path as necessary
 
-const GeoChartTamilNadu = () => {
-  const data = [
-    ['City', 'Population'],
-    ['Chennai', 7090000],
-    ['Coimbatore', 1673000],
-    ['Madurai', 1562000],
-    ['Tiruchirappalli', 916857],
-    // Add more cities and their populations here
-  ];
-
-  const options = {
-    region: 'IN-TN', // Focus on Tamil Nadu
-    displayMode: 'markers', // Use markers for cities
-    colorAxis: { colors: ['#e7711c', '#4374e0'] }, // Customize color range
-    backgroundColor: '#81d4fa',
-    datalessRegionColor: '#f8bbd0',
-    defaultColor: '#f5f5f5',
-  };
-
+const Dashboard = () => {
   return (
-    <Chart
-      chartType="GeoChart"
-      width="100%"
-      height="400px"
-      data={data}
-      options={options}
-    />
+    <div style={{ display: 'flex' }}>
+      <div style={{ flex: '1 1 50%' }}>
+        <TamilNaduMap />
+      </div>
+      <div style={{ flex: '1 1 50%', padding: '20px', background: 'linear-gradient(to right, #ff7e5f, #feb47b)' }}>
+        {/* Your card content here */}
+        <h2>Card Content</h2>
+        <p>This is where your card content goes.</p>
+      </div>
+    </div>
   );
 };
 
-export default GeoChartTamilNadu;
+export default Dashboard;
