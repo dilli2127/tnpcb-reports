@@ -11,3 +11,73 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.tooltip {
+  position: absolute;
+  background-color: rgba(69, 52, 130, 0.75);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+.district-ariyalur { fill: #ff9999; } /* Light Red */
+.district-chengalpattu { fill: #ffcc99; } /* Light Orange */
+.district-chennai { fill: #f44336; } /* Red */
+.district-coimbatore { fill: #3f51b5; } /* Blue */
+.district-cuddalore { fill: #99ff99; } /* Light Green */
+.district-dharmapuri { fill: #99ccff; } /* Light Blue */
+.district-dindigul { fill: #cc99ff; } /* Light Purple */
+.district-erode { fill: #ffcc66; } /* Light Yellow */
+.district-kallakurichi { fill: #ff9966; } /* Light Orange */
+.district-kancheepuram { fill: #66ffcc; } /* Light Cyan */
+.district-kanyakumari { fill: #3366ff; } /* Blue */
+.district-karur { fill: #ffcc33; } /* Light Yellow */
+.district-krishnagiri { fill: #ff6666; } /* Red */
+.district-madurai { fill: #ff9966; } /* Light Orange */
+.district-mayiladuthurai { fill: #66ff99; } /* Light Green */
+.district-nagapattinam { fill: #6699ff; } /* Light Blue */
+.district-namakkal { fill: #cc99ff; } /* Light Purple */
+.district-nilgiris { fill: #66ff66; } /* Light Green */
+.district-perambalur { fill: #ffcc99; } /* Light Orange */
+.district-pudukkottai { fill: #ff9999; } /* Light Red */
+.district-ramanathapuram { fill: #99ffcc; } /* Light Cyan */
+.district-ranipet { fill: #ff9966; } /* Light Orange */
+.district-salem { fill: #99ccff; } /* Light Blue */
+.district-sivaganga { fill: #ffcc66; } /* Light Yellow */
+.district-sivagangai { fill: #ffcc66; } /* Light Yellow */
+.district-tenkasi { fill: #99ff99; } /* Light Green */
+.district-thanjavur { fill: #cc99ff; } /* Light Purple */
+.district-theni { fill: #ffcc33; } /* Light Yellow */
+.district-thiruvallur { fill: #3366ff; } /* Blue */
+.district-thirupattur { fill: #ff9966; } /* Light Orange */
+.district-thiruvarur { fill: #ff9966; } /* Light Orange */
+.district-thoothukudi { fill: #ffcc99; } /* Light Orange */
+.district-tiruchirappalli { fill: #f44336; } /* Red */
+.district-tirunelveli { fill: #66ffcc; } /* Light Cyan */
+.district-tiruppur { fill: #ff9966; } /* Light Orange */
+.district-tiruvannamalai { fill: #6699ff; } /* Light Blue */
+.district-vellore { fill: #ffcc33; } /* Light Yellow */
+.district-villupuram { fill: #581ded; } /* Light Green */
+.district-virudhunagar { fill: #f44336; } /* Red */
+.district-thiruvanamalai{ fill: #66f37e; }
+.district-mayiladuthurari{ fill: #f18238; }
+
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+
+
+
