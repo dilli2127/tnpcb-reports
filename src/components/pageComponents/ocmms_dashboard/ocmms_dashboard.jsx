@@ -23,10 +23,17 @@ ChartJS.register(
 );
 
 const colorMap = {
-  Red: "#e57373", // Muted red
-  Orange: "#f8b400", // Warm orange
-  Green: "#4caf50", // Vibrant green
-  Total: "#283d3b", // Dark green
+  Red: "#e57373",
+  Orange: "#f8b400",
+  Green: "#4caf50",
+  Total: "#283d3b",
+};
+
+const gradients = {
+  Red: "linear-gradient(to right, #ff7e5f, #feb47b)",
+  Orange: "linear-gradient(to right, #ff6f00, #ff9800)",
+  Green: "linear-gradient(to right, #4caf50, #8bc34a)",
+  Total: "linear-gradient(45deg, #4DB6AC, #4DD0E1)",
 };
 
 const firstChartData = {
@@ -157,20 +164,20 @@ const OcmmsDashBoardComponent = () => {
           {
             name: "Total",
             data: "58996",
-            bgColor: colorMap.Total,
+            bgColor: gradients.Total,
             color: "white",
           },
-          { name: "Red", data: "14285", bgColor: colorMap.Red, color: "white" },
+          { name: "Red", data: "14285", bgColor: gradients.Red, color: "white" },
           {
             name: "Orange",
             data: "30930",
-            bgColor: colorMap.Orange,
+            bgColor: gradients.Orange,
             color: "white",
           },
           {
             name: "Green",
             data: "13781",
-            bgColor: colorMap.Green,
+            bgColor: gradients.Green,
             color: "white",
           },
         ].map((card, index) => (
@@ -180,12 +187,12 @@ const OcmmsDashBoardComponent = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: card.bgColor,
+              background: card.bgColor,
               borderRadius: 2,
               boxShadow: 2,
-              width: "200px", // Fixed width for all cards
-              height: "100px", // Fixed height for all cards
-              margin: "4px", // Smaller margin for closer spacing
+              width: { xs: "100%", sm: "200px" }, // Responsive width
+              height: "100px",
+              margin: "4px",
             }}
           >
             <CardContent sx={{ textAlign: "center", padding: "8px" }}>
@@ -222,11 +229,14 @@ const OcmmsDashBoardComponent = () => {
           <Box sx={{ height: "250px", width: "100%" }}>
             <Bar data={firstChartData} options={firstChartOptions} />
           </Box>
+        </Grid>
+
+        <Grid item xs={12} md={6}>
           <Typography variant="h6" gutterBottom>
             Pie Charts 1: CTO and CTE Data
           </Typography>
           <Stack direction="row" spacing={2} justifyContent="space-evenly">
-            <Box sx={{ width: "50%" }}>
+            <Box sx={{ width: "100%" }}>
               <Chart
                 chartType="PieChart"
                 data={[
@@ -243,7 +253,7 @@ const OcmmsDashBoardComponent = () => {
                 CTO Data
               </Typography>
             </Box>
-            <Box sx={{ width: "50%" }}>
+            <Box sx={{ width: "100%" }}>
               <Chart
                 chartType="PieChart"
                 data={[
@@ -262,32 +272,6 @@ const OcmmsDashBoardComponent = () => {
             </Box>
           </Stack>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Typography variant="h6" gutterBottom>
-            Table 1: CTO and CTE Data
-          </Typography>
-          <AntTable
-            columns={columns}
-            dataSource={firstChartData.labels.map((label, index) => ({
-              key: label,
-              category: label,
-              red: firstChartData.datasets[0].data[index],
-              orange: firstChartData.datasets[1].data[index],
-              green: firstChartData.datasets[2].data[index],
-              total: firstChartData.datasets.reduce(
-                (sum, dataset) => sum + dataset.data[index],
-                0
-              ),
-            }))}
-            pagination={false}
-            bordered
-            size="small"
-            style={{
-              backgroundColor: "#c2dfe3", // Content background color
-            }}
-            theadStyle={{ backgroundColor: "#e0fbfc" }} // Header background color
-          />
-        </Grid>
 
         <Grid item xs={12} md={6}>
           <Typography variant="h6" gutterBottom>
@@ -296,6 +280,9 @@ const OcmmsDashBoardComponent = () => {
           <Box sx={{ height: "250px", width: "100%" }}>
             <Bar data={secondChartData} options={secondChartOptions} />
           </Box>
+        </Grid>
+
+        <Grid item xs={12} md={6}>
           <Typography variant="h6" gutterBottom>
             Pie Chart 2: Approved, Pending, Reject Data
           </Typography>
@@ -317,19 +304,20 @@ const OcmmsDashBoardComponent = () => {
             </Typography>
           </Box>
         </Grid>
-        <Grid item xs={12} md={6}>
+        
+        <Grid item xs={12}>
           <Typography variant="h6" gutterBottom>
-            Table 2: Approved, Pending, Reject, and Total Data
+            Table: Data Overview
           </Typography>
           <AntTable
             columns={columns}
-            dataSource={secondChartData.labels.map((label, index) => ({
+            dataSource={firstChartData.labels.map((label, index) => ({
               key: label,
               category: label,
-              red: secondChartData.datasets[0].data[index],
-              orange: secondChartData.datasets[1].data[index],
-              green: secondChartData.datasets[2].data[index],
-              total: secondChartData.datasets.reduce(
+              red: firstChartData.datasets[0].data[index],
+              orange: firstChartData.datasets[1].data[index],
+              green: firstChartData.datasets[2].data[index],
+              total: firstChartData.datasets.reduce(
                 (sum, dataset) => sum + dataset.data[index],
                 0
               ),
@@ -338,9 +326,9 @@ const OcmmsDashBoardComponent = () => {
             bordered
             size="small"
             style={{
-              backgroundColor: "#c2dfe3", // Content background color
+              backgroundColor: "#c2dfe3",
             }}
-            theadStyle={{ backgroundColor: "#e0fbfc" }} // Header background color
+            theadStyle={{ backgroundColor: "#e0fbfc" }}
           />
         </Grid>
       </Grid>
