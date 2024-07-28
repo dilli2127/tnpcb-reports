@@ -41,7 +41,7 @@ const CustomLayout = ({ children }) => {
             <Link to="/over-all-dashboard">Over All Dash Board</Link>
           </Menu.Item>
           <Menu.Item key="2" icon={<LaptopOutlined />}>
-            <Link to="/invoice">OLMMS</Link>
+            <Link to="/olmms-dashboard">OLMMS</Link>
           </Menu.Item>
           <Menu.Item key="6" icon={<NotificationOutlined />}>
             <Link to="/promotion">OLGPRS</Link>

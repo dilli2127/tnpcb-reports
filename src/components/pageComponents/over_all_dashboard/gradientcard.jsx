@@ -1,6 +1,6 @@
 import React from "react";
 import "../../../index.css"; // Import the CSS file
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 import { Table } from "antd";
 
 const GradientCard = ({ selectedDistrict }) => {
@@ -41,39 +41,62 @@ const GradientCard = ({ selectedDistrict }) => {
               border: "1px solid #ccc",
               padding: "15px",
               borderRadius: "5px",
-              background:
-                "linear-gradient(135deg, #FF5733, #FFC300, #DAF7A6, #33FF57, #33B5E5)",
-              backgroundSize: "400% 400%", // Important for animation
-              color: "#fff", // White text for better contrast
-              animation: "gradientAnimation 10s ease infinite", // Apply the gradient animation
+              background:"#c8b6ff",
+               borderRadius: 2,
+                boxShadow: 2,
             }}
           >
             {" "}
             <Typography
               variant="h4"
               sx={{
-                // background: "linear-gradient(50deg, #48A9FE 40%, #48cae4 90%)",
-                // WebkitBackgroundClip: "text",
-                // WebkitTextFillColor: "transparent",
                 textAlign: "center",
-                // marginBottom: "20px",
               }}
             >
               District Information
             </Typography>
             {selectedDistrict ? (
               <>
-                <Typography variant="h4">
-                  <strong>{selectedDistrict.name}:</strong>
-                </Typography>
-                <p>Pending Cases: {selectedDistrict.pendingCases}</p>
-                <p>Pending Cases: {selectedDistrict.pendingCases}</p>
-                <p>Pending Cases: {selectedDistrict.pendingCases}</p>
-                <p>Pending Cases: {selectedDistrict.pendingCases}</p>
-                <p>Pending Cases: {selectedDistrict.pendingCases}</p>
-                <p>Pending Cases: {selectedDistrict.pendingCases}</p>
-                <p>Pending Cases: {selectedDistrict.pendingCases}</p>
-                
+                <Typography variant="h4">{selectedDistrict.name}</Typography>
+                <Stack direction="row" spacing={2} sx={{ width: "100%" }}>
+                  <Grid width={"50%"}>
+                    <Typography variant="h6">
+                      Pending Cases: {selectedDistrict.pendingCases}
+                    </Typography>
+                  </Grid>
+                  <Grid>
+                    {" "}
+                    <Typography variant="h6">
+                      Disposed Cases: {selectedDistrict.pendingCases}
+                    </Typography>
+                  </Grid>
+                </Stack>
+                <Stack direction="row" spacing={2} sx={{ width: "100%" }}>
+                  <Grid width={"50%"}>
+                    <Typography variant="h6">
+                    Unassinged: {selectedDistrict.pendingCases}
+                    </Typography>
+                  </Grid>
+                  <Grid>
+                    {" "}
+                    <Typography variant="h6">
+                    Processing: {selectedDistrict.pendingCases}
+                    </Typography>
+                  </Grid>
+                </Stack>
+                <Stack direction="row" spacing={2} sx={{ width: "100%" }}>
+                  <Grid width={"50%"}>
+                    <Typography variant="h6">
+                    Completed: {selectedDistrict.pendingCases}
+                    </Typography>
+                  </Grid>
+                  <Grid>
+                    {" "}
+                    <Typography variant="h6">
+                    Non: {selectedDistrict.pendingCases}
+                    </Typography>
+                  </Grid>
+                </Stack>
               </>
             ) : (
               <Typography variant="h4">
@@ -87,8 +110,8 @@ const GradientCard = ({ selectedDistrict }) => {
           <Table
             dataSource={dataSource}
             columns={columns}
-            scroll={{ y: 240 }} // Adjust the scroll height as needed
-            pagination={false} // Disable pagination if you prefer a scroll-only table
+            scroll={{ y: 500 }} // Adjust the scroll height as needed
+            pagination={true} // Disable pagination if you prefer a scroll-only table
             style={{ width: "100%" }}
           />
         </Grid>
