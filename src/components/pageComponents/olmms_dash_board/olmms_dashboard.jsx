@@ -8,17 +8,27 @@ import OlmmsCharts from "./olmms_charts";
 const chartData = [
   [
     ["Category", "Value"],
-    ["Disposed", 600],
-    ["Pending", 400],
+    ["Disposed", 237],
+    ["Pending", 679],
   ],
   [
-    ["Category", "Value"],
-    ["2020", 1200],
-    ["2021", 500],
-    ["2022", 700],
-    ["2023", 700],
-    ["2024", 700],
+    ["Year", "Count"],
+    ["2005", 1],
+    ["2008", 1],
+    ["2009", 1],
+    ["2014", 3],
+    ["2015", 5],
+    ["2016", 5],
+    ["2017", 6],
+    ["2018", 16],
+    ["2019", 24],
+    ["2020", 40],
+    ["2021", 68],
+    ["2022", 163],
+    ["2023", 315],
+    ["2024", 268],
   ],
+
   [
     ["Month", "Cases"],
     ["Jan", 600],
@@ -43,36 +53,49 @@ const chartData = [
     ["2024", 1030, 540, 350],
   ],
   [
-    ["Category", "Value"],
-    ["2020", 1200],
-    ["2021", 500],
-    ["2022", 700],
-    ["2023", 700],
-    ["2024", 700],
+    ["Month", "Cases"],
+    ["Jan", 600],
+    ["Feb", 700],
+    ["Mar", 800],
+    ["Apr", 96],
+    ["May", 800],
+    ["Jun", 80],
+    ["Jul", 750],
+    ["Aug", 500],
+    ["Sep", 120],
+    ["Oct", 1500],
+    ["Nov", 160],
+    ["Dec", 100],
   ],
   [
     ["Category", "Value"],
-    ["2020", 1200],
-    ["2021", 500],
-    ["2022", 700],
-    ["2023", 700],
-    ["2024", 700],
+    ["NationalHumanRightsCommission", 1],
+    ["TNStateHumanRightsCommission", 2],
+    ["NationalCommissionforSCandST", 0],
+    ["NationalCompanyLawTribunal", 0],
+    ["HonbleHighCourtofMadras", 255],
+    ["MotorAccidentClaimsTribunal", 1],
+    ["HonbleNationalGreenTribunalSZ", 157],
+    ["HonbleNationalGreenTribunalPB", 30],
+    ["DistrictLabourCourt", 0],
+    ["HonbleSupremeCourtofIndia", 19],
+    ["HonbleHighCourtofMadrasMaduraiBench", 117],
+    ["HonbleAppellateAuthority", 190],
+    ["JmMunsiffcourt", 144],
   ],
+
   [
     ["Category", "Value"],
-    ["2020", 1200],
-    ["2021", 500],
-    ["2022", 700],
-    ["2023", 700],
-    ["2024", 700],
-  ],
-  [
-    ["Category", "Value"],
-    ["2020", 1200],
-    ["2021", 500],
-    ["2022", 700],
-    ["2023", 700],
-    ["2024", 700],
+    ["Chennai", 175],
+    ["Trichy", 52],
+    ["Vellore", 97],
+    ["Coimbatore", 127],
+    ["Madurai", 65],
+    ["Salem", 111],
+    ["Tirunelveli", 95],
+    ["Cuddalore", 21],
+    ["Corporate office", 8],
+    ["Chengalpattu", 61],
   ],
 ];
 
@@ -129,9 +152,9 @@ const chartOptions = [
     options: {
       pieHole: 0.4,
       chartArea: { width: "100%", height: "80%" },
-      legend: { position: "bottom" },
+      legend: { position: "TOP" },
       pieSliceText: "value",
-      title: "Year Wise",
+      title: "Month Wise",
       colors: ["#FF8C00", "#1E90FF", "#008080", "#D32F2F", "#005377"], // Updated colors
     },
   },
@@ -140,9 +163,9 @@ const chartOptions = [
     options: {
       pieHole: 0.4,
       chartArea: { width: "100%", height: "80%" },
-      legend: { position: "bottom" },
+      legend: { position: "TOP" },
       pieSliceText: "value",
-      title: "Year Wise",
+      title: "Court Wise",
       colors: ["#FF8C00", "#1E90FF", "#008080", "#D32F2F", "#005377"], // Updated colors
     },
   },
@@ -151,20 +174,9 @@ const chartOptions = [
     options: {
       pieHole: 0.4,
       chartArea: { width: "100%", height: "80%" },
-      legend: { position: "bottom" },
+      legend: { position: "TOP" },
       pieSliceText: "value",
-      title: "Year Wise",
-      colors: ["#FF8C00", "#1E90FF", "#008080", "#D32F2F", "#005377"], // Updated colors
-    },
-  },
-  {
-    chartType: "PieChart",
-    options: {
-      pieHole: 0.4,
-      chartArea: { width: "100%", height: "80%" },
-      legend: { position: "bottom" },
-      pieSliceText: "value",
-      title: "Year Wise",
+      title: "Monitoring Office Wise",
       colors: ["#FF8C00", "#1E90FF", "#008080", "#D32F2F", "#005377"], // Updated colors
     },
   },
@@ -172,12 +184,12 @@ const chartOptions = [
 
 // Sample card names and data
 const cardDetails = [
-  { name: "Total Cases", data: "1000" },
-  { name: "Pending", data: "50" },
-  { name: "Disposed", data: "30000" },
-  { name: "Counter Pneding", data: "200" },
-  { name: "By Department", data: "30000" },
-  { name: "Against Department", data: "200" },
+  { name: "Total Cases", data: "916" },
+  { name: "Pending", data: "679" },
+  { name: "Disposed", data: "237" },
+  { name: "Counter Pneding", data: "462" },
+  { name: "By Department", data: "140" },
+  { name: "Against Department", data: "776" },
 ];
 
 // Gradient background styles
@@ -292,7 +304,7 @@ const OlmmsDashboardLanding = () => {
 
       {/* Second Row: More Charts */}
       <Grid container spacing={4} mb={4}>
-        {chartOptions.slice(2,4).map((chart, index) => (
+        {chartOptions.slice(2, 4).map((chart, index) => (
           <Grid item xs={12} md={6} lg={6} key={index + 2}>
             <Card>
               <CardContent>

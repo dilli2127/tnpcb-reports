@@ -15,7 +15,7 @@ console.log("props",props)
                   chartType={chart.chartType}
                   width="100%"
                   height="300px"
-                  data={props.chartData[index + 2]}
+                  data={props.chartData[index + 4]}
                   options={chart.options}
                 />
               </CardContent>

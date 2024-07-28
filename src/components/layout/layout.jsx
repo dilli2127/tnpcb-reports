@@ -44,10 +44,10 @@ const CustomLayout = ({ children }) => {
             <Link to="/olmms-dashboard">OLMMS</Link>
           </Menu.Item>
           <Menu.Item key="6" icon={<NotificationOutlined />}>
-            <Link to="/promotion">OLGPRS</Link>
+            <Link to="/olgprs-dashboard">OLGPRS</Link>
           </Menu.Item>
           <Menu.Item key="3" icon={<NotificationOutlined />}>
-            <Link to="/promotion">OCMMS</Link>
+            <Link to="/ocmms-dashboard">OCMMS</Link>
           </Menu.Item>
           <Menu.Item key="4" icon={<NotificationOutlined />}>
             <Link to="/promotion">Bio Medical Waste</Link>

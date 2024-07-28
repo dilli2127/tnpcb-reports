@@ -6,6 +6,8 @@ import Dashboard from '../../components/pages/overAllDashBoard';
 import Login from "../defaultPage/login";
 import { ProjectName } from "../common/constants";
 import OlmmsDashboardPage from '../pages/olmms_dashboard';
+import OcmmsDashBoardComponent from '../pageComponents/ocmms_dashboard/ocmms_dashboard';
+import OlgprsDashBoardComponent from '../pageComponents/olgprs_dashboard/olgprs_dashboard_componenet';
 
 const Router = () => {
   return (
@@ -34,6 +36,8 @@ const RoutePages = () => {
             <Routes>
             <Route path="/over-all-dashboard" element={<Dashboard />} />
             <Route path="/olmms-dashboard" element={<OlmmsDashboardPage />} />
+            <Route path="/ocmms-dashboard" element={<OcmmsDashBoardComponent />} />
+            <Route path="/olgprs-dashboard" element={<OlgprsDashBoardComponent />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </CustomLayout>
