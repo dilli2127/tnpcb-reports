@@ -2,7 +2,7 @@ import { Card, CardContent, Grid } from "@mui/material";
 import React from "react";
 import Chart from "react-google-charts";
 
-const OlmmsCharts = (props) => {
+const OlmmsChartsOne = (props) => {
 console.log("props",props)
 
     return(
@@ -25,4 +25,4 @@ console.log("props",props)
       </Grid>
     )
 }
-export default OlmmsCharts;
+export default OlmmsChartsOne;

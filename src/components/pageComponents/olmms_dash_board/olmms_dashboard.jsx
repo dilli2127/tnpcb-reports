@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Box, Card, CardContent, Typography, Grid } from "@mui/material";
 import { Chart } from "react-google-charts";
 import OlmmsReportsTable from "../olmms_dash_board/olmms_dashboard_table";
-import OlmmsCharts from "./olmms_charts";
+import OlmmsCharts from "./olmms_calendar_charts";
+import OlmmsChartsOne from "./olmms_charts_pie_charts";
 
 // Sample data for the charts
 const chartData = [
@@ -229,7 +230,6 @@ const OlmmsDashboardLanding = () => {
   }, []);
   return (
     <Box sx={{ p: 4 }}>
-      {/* Dashboard Title */}
       <Grid container justifyContent="center" mb={4}>
         <Typography
           variant="h4"
@@ -245,7 +245,6 @@ const OlmmsDashboardLanding = () => {
         </Typography>
       </Grid>
 
-      {/* First Row: 40% - 4 Cards, 60% - 2 Charts */}
       <Grid container spacing={4} mb={1}>
         <Grid item xs={12} md={5} lg={4}>
           <Grid container spacing={4} mb={4} sx={{ width: "100%" }}>
@@ -258,6 +257,8 @@ const OlmmsDashboardLanding = () => {
                     boxShadow: 2,
                     background:
                       shuffledGradients[index % shuffledGradients.length],
+                    color: "white",
+                    fontWeight: "bold",
                   }}
                 >
                   <CardContent>
@@ -301,8 +302,6 @@ const OlmmsDashboardLanding = () => {
           </Grid>
         </Grid>
       </Grid>
-
-      {/* Second Row: More Charts */}
       <Grid container spacing={4} mb={4}>
         {chartOptions.slice(2, 4).map((chart, index) => (
           <Grid item xs={12} md={6} lg={6} key={index + 2}>
@@ -320,8 +319,8 @@ const OlmmsDashboardLanding = () => {
           </Grid>
         ))}
       </Grid>
-      <Grid container spacing={4}>
-        <Grid item xs={12}>
+      <Grid container spacing={4} mb={4}>
+        <Grid item xs={12} md={6} lg={6}>
           <Card>
             <CardContent>
               <Typography variant="h6" sx={{ mb: 2 }}>
@@ -331,8 +330,13 @@ const OlmmsDashboardLanding = () => {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} md={6} lg={6}>
           <OlmmsCharts chartData={chartData} chartOptions={chartOptions} />
+        </Grid>
+      </Grid>
+      <Grid container spacing={4}>
+        <Grid item xs={12}>
+          <OlmmsChartsOne chartData={chartData} chartOptions={chartOptions} />
         </Grid>
       </Grid>
     </Box>

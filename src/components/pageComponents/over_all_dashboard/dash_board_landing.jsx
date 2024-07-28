@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Card, CardContent, Typography, Grid } from "@mui/material";
 import { Chart } from "react-google-charts";
 
@@ -167,18 +167,40 @@ const cardDetails = [
 
 // Gradient background styles
 const gradientStyles = [
-  "linear-gradient(45deg, #FF6F61 30%, #DE7A7A 90%)",
-  "linear-gradient(45deg, #6B5B95 30%, #B7A0CC 90%)",
-  "linear-gradient(45deg, #88D8B0 30%, #68B9A1 90%)",
-  "linear-gradient(45deg, #FFB74D 30%, #FF8A65 90%)",
-  "linear-gradient(45deg, #64B5F6 30%, #1E88E5 90%)",
-  "linear-gradient(45deg, #4DB6AC 30%, #00796B 90%)",
+  "linear-gradient(45deg, #1D976C 30%, #93F9B9 90%)", // Green to Light Green
+  "linear-gradient(45deg, #FF512F 30%, #F09819 90%)", // Orange to Yellow
+  "linear-gradient(45deg, #1A2980 30%, #26D0CE 90%)", // Blue to Teal
+  "linear-gradient(45deg, #654ea3 30%, #eaafc8 90%)", // Purple to Pink
+  "linear-gradient(45deg, #FF4E50 30%, #F9D423 90%)", // Red to Yellow
+  "linear-gradient(45deg, #36D1DC 30%, #5B86E5 90%)", // Light Blue to Blue
+  "linear-gradient(45deg, #C06C84 30%, #6C5B7B 90%)", // Pink to Purple
+  "linear-gradient(45deg, #FFD194 30%, #D1913C 90%)", // Light Orange to Dark Orange
+  "linear-gradient(45deg, #FF7E5F 30%, #FEB47B 90%)", // Coral to Peach
+  "linear-gradient(45deg, #B24592 30%, #F15F79 90%)", // Magenta to Light Pink
 ];
+function shuffle(array) {
+  let currentIndex = array.length,
+    randomIndex;
 
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+}
 const DashboardLanding = () => {
+  const [shuffledGradients, setShuffledGradients] = useState([]);
+  useEffect(() => {
+    setShuffledGradients(shuffle([...gradientStyles]));
+  }, []);
   return (
     <Box sx={{ p: 4 }}>
-      {/* Dashboard Title */}
       <Grid container justifyContent="center">
         <Typography
           variant="h4"
@@ -194,7 +216,6 @@ const DashboardLanding = () => {
         </Typography>
       </Grid>
 
-      {/* Card Details */}
       <Grid container spacing={4}>
         {cardDetails.map((card, index) => (
           <Grid item xs={12} sm={6} md={4} lg={2} key={index}>
@@ -203,10 +224,13 @@ const DashboardLanding = () => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                background: gradientStyles[index % gradientStyles.length],
+                 background:
+                      shuffledGradients[index % shuffledGradients.length],
                 borderRadius: 2,
                 boxShadow: 2,
-                height: '100%', // Ensure the card height is responsive
+                height: '100%',
+                color:"white",
+                fontWeight:"bold"
               }}
             >
               <CardContent sx={{ textAlign: "center" }}>
@@ -234,7 +258,6 @@ const DashboardLanding = () => {
         ))}
       </Grid>
 
-      {/* Charts */}
       <Grid container spacing={4} mt={1}>
         {chartData.map((data, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>

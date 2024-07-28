@@ -2,7 +2,6 @@ import React from "react";
 import { Table, Tag, Space } from "antd";
 
 const OlmmsReportsTable = () => {
-  // Example data
   const dataSource = [
     {
       key: '1',
@@ -84,7 +83,7 @@ const OlmmsReportsTable = () => {
       dataSource={dataSource}
       columns={columns}
       pagination={{ pageSize: 5 }}
-      scroll={{ y: 240 }} // Adjust as needed
+      scroll={{ y: 500 }} // Adjust as needed
     />
   );
 };
