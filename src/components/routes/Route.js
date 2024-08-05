@@ -8,6 +8,9 @@ import { ProjectName } from "../common/constants";
 import OlmmsDashboardPage from '../pages/olmms_dashboard';
 import OcmmsDashBoardComponent from '../pageComponents/ocmms_dashboard/ocmms_dashboard';
 import OlgprsDashBoardComponent from '../pageComponents/olgprs_dashboard/olgprs_dashboard_componenet';
+import BiomedicalDashBoardComponent from '../pages/biomedical'
+import OhsDashBoardComponent from '../pages/ohs_dashboard';
+import AqiDashBoardComponent from '../pages/aqi_dashboard';
 
 const Router = () => {
   return (
@@ -38,6 +41,9 @@ const RoutePages = () => {
             <Route path="/olmms-dashboard" element={<OlmmsDashboardPage />} />
             <Route path="/ocmms-dashboard" element={<OcmmsDashBoardComponent />} />
             <Route path="/olgprs-dashboard" element={<OlgprsDashBoardComponent />} />
+            <Route path="/biomedical-dashboard" element={<BiomedicalDashBoardComponent />} />
+            <Route path="/ohs-dashboard" element={<OhsDashBoardComponent />} />
+            <Route path="/aqi-dashboard" element={<AqiDashBoardComponent />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </CustomLayout>
